@@ -1,0 +1,40 @@
+{
+  "scenarioName": "cadastrar",
+  "requiredScenarioState": "Started",
+  "request": {
+    "method": "POST",
+    "urlPath": "/produtos",
+    "headers": {
+      "Content-Type": {
+        "equalTo": "application/json"
+      }
+    },
+    "bodyPatterns": [
+      {
+        "matchesJsonPath": "nome",
+        "matchType": "string"
+      },
+      {
+        "matchesJsonPath": "preco",
+        "matchType": "integer"
+      },
+      {
+        "matchesJsonPath": "descricao",
+        "matchType": "string"
+      },
+      {
+        "matchesJsonPath": "quantidade",
+        "matchType": "integer"
+      }
+    ]
+  },
+  "response": {
+    "status": 201,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "message": "Cadastro realizado com sucesso"
+    }
+  }
+}

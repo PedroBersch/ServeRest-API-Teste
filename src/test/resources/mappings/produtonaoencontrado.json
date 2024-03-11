@@ -1,0 +1,15 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/produtos/2"
+  },
+  "response": {
+    "status": 400,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "message": "Produto não encontrado"
+    }
+  }
+}

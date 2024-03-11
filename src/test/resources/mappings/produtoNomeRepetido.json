@@ -1,0 +1,29 @@
+{
+  "scenarioName": "cadastrar",
+  "requiredScenarioState": "Started",
+  "request": {
+    "method": "POST",
+    "urlPath": "/produtos/produto-invalido",
+    "headers": {
+      "Content-Type": {
+        "equalTo": "application/json"
+      }
+    },
+    "bodyPatterns": [
+      {
+        "matchesJsonPath": "$.nome",
+        "matchType": "string",
+        "equalToJson": "Logitech MX Vertical"
+      }
+    ]
+  },
+  "response": {
+    "status": 400,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "jsonBody": {
+      "message": "Já existe produto com esse nome"
+    }
+  }
+}
