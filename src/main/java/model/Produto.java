@@ -12,4 +12,6 @@ public class Produto {
     private Integer preco;
     private String descricao;
     private Integer quantidade;
+
+    private Integer precoUnitario;
 }

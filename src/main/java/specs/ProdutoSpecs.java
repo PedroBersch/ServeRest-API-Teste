@@ -6,11 +6,11 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import model.enums.PermissaoTipoEnum;
 
-public class produtoSpecs {
+public class ProdutoSpecs {
 
      static LoginClient loginClient = new LoginClient();
 
-    public produtoSpecs() {
+    public ProdutoSpecs() {
     }
 
     public static RequestSpecification produtoReqSpecAdm() {
@@ -45,11 +45,11 @@ public class produtoSpecs {
     public RequestSpecification produtoReqSpec(PermissaoTipoEnum permissao) {
             switch (permissao) {
                 case ADMIN:
-                    return produtoSpecs.produtoReqSpecAdm();
+                    return ProdutoSpecs.produtoReqSpecAdm();
                 case CONVIDADO:
-                    return produtoSpecs.produtoReqSpecFuncionario();
+                    return ProdutoSpecs.produtoReqSpecFuncionario();
                 default:
-                    return produtoSpecs.produtoReqSpecTokenInvalido();
+                    return ProdutoSpecs.produtoReqSpecTokenInvalido();
             }
     }
 }

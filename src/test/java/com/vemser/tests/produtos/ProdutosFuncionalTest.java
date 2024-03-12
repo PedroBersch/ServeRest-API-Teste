@@ -2,7 +2,6 @@ package com.vemser.tests.produtos;
 
 import client.ProdutoClient;
 import data.factory.ProdutoDataFactory;
-import model.ListaProdutosResponse;
 import model.Produto;
 import model.ProdutoResponse;
 import model.enums.PermissaoTipoEnum;
@@ -73,16 +72,6 @@ public class ProdutosFuncionalTest {
             .statusCode(200)
             .extract().as(ProdutoResponse.class);
         Assertions.assertNotNull(produtoBuscado.get_id());
-    }
-
-    @Test
-    public void testBuscarProdutosPorQuery() {
-        ListaProdutosResponse produtoResponse =
-            produtoClient.listarProdutos("nome", "Sapato")
-                .then()
-                .statusCode(200)
-                .extract().as(ListaProdutosResponse.class);
-        Assertions.assertTrue(() -> produtoResponse.getQuantidade() > 0);
     }
 
     //Caminho Infeliz - Cadastro

@@ -3,14 +3,14 @@ package client;
 import io.restassured.response.Response;
 import model.Produto;
 import model.enums.PermissaoTipoEnum;
-import specs.produtoSpecs;
+import specs.ProdutoSpecs;
 
 import static io.restassured.RestAssured.given;
 
 public class ProdutoClient {
     private static final String PRODUTOS = "/produtos";
     private static final String PRODUTOS_ID= "/produtos/{_id}";
-    public static specs.produtoSpecs produtoSpecs = new produtoSpecs();
+    public static ProdutoSpecs produtoSpecs = new ProdutoSpecs();
 
     public ProdutoClient() {
     }
