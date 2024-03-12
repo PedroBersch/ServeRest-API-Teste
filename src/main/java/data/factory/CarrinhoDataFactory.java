@@ -1,14 +1,11 @@
 package data.factory;
 
 import client.ProdutoClient;
-import model.Carrinho;
 import model.CarrinhoProduto;
 import model.Produto;
 import model.ProdutoResponse;
-import model.enums.PermissaoTipoEnum;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static model.enums.PermissaoTipoEnum.ADMIN;
 

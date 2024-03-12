@@ -1,6 +1,5 @@
 package data.factory;
 
-import client.LoginClient;
 import model.Login;
 import utils.Manipulation;
 

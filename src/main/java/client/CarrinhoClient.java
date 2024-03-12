@@ -1,25 +1,17 @@
 package client;
 
-import data.factory.ProdutoDataFactory;
 import io.restassured.response.Response;
 import model.Carrinho;
-import model.CarrinhoProduto;
-import model.Produto;
-import model.ProdutoResponse;
-import model.enums.PermissaoTipoEnum;
 import specs.CarrinhoSpecs;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static io.restassured.RestAssured.given;
-import static model.enums.PermissaoTipoEnum.ADMIN;
 
 public class CarrinhoClient {
     private static final String CARRINHO = "/carrinhos";
     private static final String CARRINHO_ID = "/carrinhos/{_id}";
+    private static final String CONCLUIR_COMPRA = "/carrinhos/concluir-compra";
+    private static final String CANCELAR_COMPRA = "/carrinhos/cancelar-compra";
     public static CarrinhoSpecs carrinhoSpecs = new CarrinhoSpecs();
-    public ProdutoClient produtoClient = new ProdutoClient();
     public Response buscarCarrinhoQuery(String key, String id){
         return
             given()
@@ -45,5 +37,29 @@ public class CarrinhoClient {
             .when()
                 .get(CARRINHO_ID)
             ;
+    }
+    public Response concluirCompra(Carrinho listaCarrinho){
+         String token =
+             cadastrarCarrinhoComSucesso(listaCarrinho)
+                 .then()
+                .extract().response().jsonPath().getString("authorization");
+         return
+             given()
+                 .spec(carrinhoSpecs.carrinhoReqSpec())
+                 .header("authorization", "Bearer " + token)
+             .when()
+                 .delete(CONCLUIR_COMPRA);
+    }
+    public Response cancelarCompra(Carrinho listaCarrinho){
+        String token =
+            cadastrarCarrinhoComSucesso(listaCarrinho)
+                .then()
+                .extract().response().jsonPath().getString("authorization");
+        return
+            given()
+                .spec(carrinhoSpecs.carrinhoReqSpec())
+                .header("authorization", "Bearer " + token)
+                .when()
+                .delete(CANCELAR_COMPRA);
     }
 }

@@ -1,20 +1,11 @@
 package com.vemser.tests.carrinho;
 
 import client.CarrinhoClient;
-import client.ProdutoClient;
 import data.factory.CarrinhoDataFactory;
-import data.factory.ProdutoDataFactory;
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
-import model.*;
+import model.Carrinho;
+import model.CarrinhoResponse;
 import org.junit.jupiter.api.Test;
-import specs.CarrinhoSpecs;
 
-import java.util.ArrayList;
-
-import static client.CarrinhoClient.carrinhoSpecs;
-import static io.restassured.RestAssured.given;
-import static model.enums.PermissaoTipoEnum.*;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -45,5 +36,25 @@ public class CarrinhoFuncionalTest {
                 .statusCode(200)
                 .body("precoTotal",equalTo(6180))
                 ;
+    }
+    @Test
+    public void testConcluirCompraComSucesso(){
+        Carrinho carrinho = new Carrinho();
+        carrinho.setProdutos(CarrinhoDataFactory.listaCarrinhoValido());
+        carrinhoClient.concluirCompra(carrinho)
+            .then()
+            .statusCode(200)
+            .body("message",equalTo("Registro excluído com sucesso"))
+        ;
+    }
+    @Test
+    public void testCancelarCompraComSucesso(){
+        Carrinho carrinho = new Carrinho();
+        carrinho.setProdutos(CarrinhoDataFactory.listaCarrinhoValido());
+        carrinhoClient.cancelarCompra(carrinho)
+            .then()
+            .statusCode(200)
+            .body("message",equalTo("Registro excluído com sucesso. Estoque dos produtos reabastecido"))
+        ;
     }
 }
