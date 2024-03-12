@@ -10,6 +10,11 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CarrinhoResponse extends Carrinho{
-    private ArrayList<Carrinho> carrinhos;
     private Integer quantidade;
+    private ArrayList<Carrinho> carrinhos;
+    private Integer precoTotal;
+    private Integer quantidadeTotal;
+    private String idUsuario;
+    private String _id;
+    private String message;
 }

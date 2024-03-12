@@ -10,9 +10,7 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Carrinho {
-    private ArrayList<ProdutoResponse> produtos;
-    private Integer precoTotal;
-    private Integer quantidadeTotal;
-    private String idUsuario;
-    private String _id;
+
+    private ArrayList<CarrinhoProduto> produtos = new ArrayList<>();
+
 }
